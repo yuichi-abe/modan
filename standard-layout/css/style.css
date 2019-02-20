@@ -1,0 +1,215 @@
+@charset "UTF-8";
+
+html {
+    font-size: 62.5%;
+}
+
+body{
+    color: #333;
+
+    /* emは親要素から見た､倍率
+    remはルート要素から見た倍率 */
+    font-size: 1.2rem;
+    /* フォント名に半角スペースや全角文字が含まれる場合は
+    シングルクオーテーションかダブルクオーテーションで囲む */
+    font-family: "Hiragino kaku GothicProN", Meiryo, sans-serif;
+}
+
+*,*::before,*::after{
+    /* width とheightの指定がボーダーエリアを指すようになる */
+    box-sizing: border-box;
+}
+
+a:link,a:visited,a:hover,a:active{
+    color: #d03c56;
+
+    /* リンクの下線は非表示 */
+    text-decoration: none;
+}
+
+.wrapper{
+    width: 970px;
+    /* 左右をautoにして中央寄せにする 
+    ※ブロック要素の左右のマージンを autoにすると左右でマージンが同じ幅になる */
+    margin: 30px auto 40px;
+}
+
+
+.header{
+    width:100%;
+    padding: 28px 0 10px;
+    background: url(../images/bg-header.gif) repeat-x;
+    box-shadow: 0 0 10px 1px #e3e3e3;
+}
+
+
+/* floatを使用すると､親要素の高さに影響を与えなくなる為
+メインとサイドメニューのラッパーの高さが0になってしまう｡
+対策として､回り込み解除用のクラスを作成して､after疑似要素でclear:bothを
+持つ要素をラッパーに追加する*/
+.clearfix::after{
+    clear: both; 
+    content: "";
+    display: block;
+} 
+
+.main{
+    display: block;
+    float: left;
+    width: 660px;
+}
+
+.sidemenu{
+    float: right;
+    width: 275px;
+}
+
+.footer{
+    width: 100%;
+}
+
+.logo{
+    /* ロゴの幅 */
+    width: 225px; 
+    /* ロゴの高さ */
+    height:56px;
+    /* 中央寄せ */
+    margin:0 auto;
+    background: url("../images/logo.png") no-repeat;
+    /* ロゴ幅分のインデントが作成されて､文字がロゴの左端に飛び出る */
+    text-indent: 100%;
+    /* 文字が改行されない */
+    white-space: nowrap;
+    /* 飛び出た文字を表示しない */
+    overflow: hidden;
+}
+
+.logo a{
+    /* a要素はインライン要素なので､そのままでは縦横幅を指定できない */
+    display: block;
+    /* 親要素(.logo)の幅いっぱいに広がる */
+    width: 100%;
+    height: 100%;
+}
+
+.global-nav{
+    margin-top: 15px;
+    /* 子要素も中央寄せが適用される */
+    text-align: center;
+}
+
+.global-nav .nav-item{
+    /* リストが横並びになる */
+    display: inline-block;
+    margin: 0 10px;
+
+    /* 幅と高さを指定していないので､子要素(aタグ)の幅と高さに左右される */
+}
+
+.global-nav .nav-item a{
+    /* 幅と高さを指定する為 */
+    display: inline-block;
+    width: 100px;
+    /* height と line-height を同じ値にすると､縦方向で中央寄せ */
+    height: 30px;
+    line-height: 30px;
+    /* 横方向の中央寄せ */
+    text-align: center;
+    color: #666;
+    font-size: 1.3rem;
+    /* 文字の間隔 */
+    letter-spacing: 1px;
+    /* cssプロパティの値が変化する時間を変化することができる｡ */
+    transition: 0.15s;
+    border-radius: 8px;
+    
+
+}
+
+/* スペースを開けずに連続して記述すると､両方の持ってる要素を指定できる */
+.global-nav .nav-item.active a,
+/* 要素にマウスホバーしたときにスタイルを有効化する疑似クラス */
+.global-nav .nav-item a:hover{
+    background-color: #d03c56;
+    color: #fff;
+
+}
+
+.hot-topic{
+    display: block;
+    height: 300px;
+    margin-bottom: 30px;
+    /* 右方向のズレ､下方向のズレ､ぼかしの大きさ(省略可)､拡張の大きさ(省略可)､影の色 */
+    box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.15s;
+}
+
+.hot-topic:hover{
+    /* クリックした時､不透明度を少し下げる */
+    opacity: 0.85;
+}
+
+.hot-topic .image{
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.hot-topic .content{
+    /* 子要素のposition:absoluteの基準となる */
+    position: relative;
+    float: right;
+    width: 50%;
+    height: 100%;
+    padding:105px 25px 0;
+    background-color: #2d3d54;
+    /* 数値のみを記入すると､子要素に引き継がれた際に子要素の文字サイズが基準となる為､ズレが起きない */
+    line-height: 1.6;
+}
+
+.hot-topic .title{
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: normal;
+    font-size: 2.0rem;
+}
+
+.hot-topic .desc{
+    color: #ddc;
+}
+
+.hot-topic .date{
+    position: absolute;
+    top:60px;
+    left:0;
+    width: 140px;
+    padding: 4px;
+    background-color: #fff;
+    color:#2d3d54;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+
+
+
+
+
+
+/* clearfix 確認用*/
+/* 
+.header, .main, .sidemenu , .footer{
+    border: 1px solid #eee;
+    background-color: #aaa;
+}
+
+.header,.footer{
+    height: 100px;
+}
+
+.main,.sidemenu{
+    height: 500px;
+} */
