@@ -1,0 +1,75 @@
+
+.scroll-list{
+    /* heightではなく､max-heightを使用すると､中の要素が少ない場合には
+    その高さに応じて縮むようになる */
+    max-height: 220px;
+    /* overflow-y:autoを指定すると､親要素の高さを上回った場合にスクロールバーが表示される */
+    overflow-y: auto;
+    margin-bottom: 30px;
+    /* リストマークを非表示(reset.css でマークを消しているのは .nav li{} のみ) */
+    list-style-type: none;
+}
+
+.scroll-list .scroll-item a{
+    /* リスト全体をリンク領域にするため */
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    /* バックグラウンドカラーの変化に時差をつける */
+    transition: background-color 0.1s;
+    font-size: 0;
+}
+
+/* 偶数行のリストアイテムにのみバックグラウンドカラー指定 */
+.scroll-list .scroll-item:nth-of-type(even) a{
+    background: url("../images/bg-slash.gif");
+}
+
+/* ホバーしたとき */
+.scroll-list .scroll-item a:hover{
+    background-color: #fafaf8;
+}
+
+.scroll-list .date{
+    display: inline-block;
+    width: 19px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 1.0rem;
+}
+
+.scroll-list .category{
+    display: inline-block;
+    width: 8%;
+    border-radius: 5px;
+    background-color: #d03c56;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 1.0rem;
+    line-height: 16px;
+}
+.scroll-list .category {
+    display: inline-block;
+    width: 8%;
+    border-radius: 5px;
+    background-color: #d03c56;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 1.0rem;
+    line-height: 16px;
+  }
+.scroll-list .category.news{
+    background-color: #2c3c53;
+}
+
+.scroll-list .title{
+    display: inline-block;
+    width: 73%;
+    padding-left: 15%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.2rem;
+}
