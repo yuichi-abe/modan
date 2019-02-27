@@ -409,12 +409,15 @@ font-size: 1.2rem;
 
 .ranking .ranking-item{
     margin-top: 15px;
+    position: relative;
 }
 
 .ranking .ranking-item a{
     display: block;
     font-size: 0;
+    
     transition: opacity 0.15s;
+    /* z-index: 10; */
 }
 
 .ranking .ranking-item a:hover{
@@ -434,17 +437,36 @@ font-size: 1.2rem;
     margin:0 10px;
     border:1px solid #ccc;
     color:#aaa;
-    vertical-align: 20px;
+    /* vertical-align: 100%; */
     text-align: center;
     font-weight: bold;
     line-height: 16px;
-
+    border-radius: 10px;
+    position: absolute;
+    top:-10px;
+    left:35px;
     /*  18px(:height) - 1px*2(:border ) = 16pxで 垂直方向での中央寄せをする */
-    line-height: 16px;
+    /* line-height: 16px;
     -webkit-transform: rotate(45deg);
-    -ms-transform:rotate(45deg);
+    -ms-transform:rotate(45deg); */
     /* 45度 傾ける */
-    transform: rotate(45deg);
+    /* transform: rotate(45deg); */
+    
+}
+
+.ranking .order::before{
+    /* カウンタ表示 */
+    content:counter(ranking);
+    /* カウンタインクリメント */
+    counter-increment: ranking;
+    display: inline-block;
+    font-size: 1.0rem;
+    
+    
+    /* 外枠を45度傾けているので､中身は-45度傾けて戻してあげる処理 */
+    /* -webkit-transform: rotate(-45deg);
+    -ms-transform:rotate(-45deg);
+    transform: rotate(-45deg); */
     
 }
 
@@ -469,19 +491,8 @@ font-size: 1.2rem;
     background-color: #a0541a;
 }
 
-.ranking .order::before{
-    /* カウンタ表示 */
-    content:counter(ranking);
-    /* カウンタインクリメント */
-    counter-increment: ranking;
-    display: inline-block;
-    font-size: 1.0rem;
-    /* 外枠を45度傾けているので､中身は-45度傾けて戻してあげる処理 */
-    -webkit-transform: rotate(-45deg);
-    -ms-transform:rotate(-45deg);
-    transform: rotate(-45deg);
-    
-}
+
+
 
 .ranking .text {
     display: inline-block;
